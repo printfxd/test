@@ -1,0 +1,59 @@
+BufferedReader : 
+
+        BufferedReader br = null;
+        try {
+            String sCurrentLine;
+            br = new BufferedReader(new FileReader("/Users/hdd101022/Documents/ota_test.txt"));
+            while ((sCurrentLine = br.readLine()) != null) {
+                logger.info(sCurrentLine);
+                String[] keyValue = ObjectUtil.getString(sCurrentLine).split("=");
+                if (keyValue.length >= 2)
+                    resultMap.put(keyValue[0], keyValue[1]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (br != null)br.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        
+        
+InputStream  : 
+
+        InputStream in = session.getServletContext().getResourceAsStream("/WEB-INF/file/ota_test.txt");
+        int ch = 0;
+        StringBuffer temp = new StringBuffer();
+        try {
+            while((ch = in.read())!= -1){
+                temp.append((char)ch);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        String[] strArray = (temp.toString()).split("\n");
+        for (String str : strArray) {
+            logger.info(str);
+            String[] keyValue = ObjectUtil.getString(str).split("=");
+            if (keyValue.length >= 2)
+                resultMap.put(keyValue[0], keyValue[1].replace("\"", ""));
+        }
+        
+        
+        
+Project domain : 
+    	String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+        logger.info("basePath = " + basePath);
+        
+
+Zip select folder :
+        // return <script>
+        File file = new File(session.getServletContext().getRealPath("/WEB-INF/file/OTA"));
+        if (file.isDirectory()) logger.info("is dir");
+        if (file.isFile()) logger.info("is file");
+        genZipResponse(response, "OTA", file);
