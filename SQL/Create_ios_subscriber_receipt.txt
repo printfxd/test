@@ -1,0 +1,34 @@
+
+
+CREATE  TABLE `golfclub`.`subscriber_ios_receipt` (
+  `seq` INT NOT NULL AUTO_INCREMENT ,
+  `subscriber_app_seq` INT(11) NOT NULL ,
+  `product_id` VARCHAR(64) NOT NULL ,
+  `receipt` TEXT NOT NULL ,
+  `update_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  PRIMARY KEY (`seq`) ,
+  INDEX `subscriber_ios_receipt_fk_subscriber_app_idx` (`subscriber_app_seq` ASC) ,
+  CONSTRAINT `subscriber_ios_receipt_fk_subscriber_app`
+    FOREIGN KEY (`subscriber_app_seq` )
+    REFERENCES `golfclub`.`subscriber_app` (`seq` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+CREATE  TABLE `golfclub`.`subscriber_ios_transaction` (
+  `seq` INT(11) NOT NULL AUTO_INCREMENT ,
+  `subscriber_app_seq` INT(11) NOT NULL ,
+  `product_id` VARCHAR(64) NOT NULL ,
+  `org_transaction_id` VARCHAR(32) NOT NULL ,
+  `org_purchase_date` DATETIME NOT NULL ,
+  `transaction_id` VARCHAR(32) NOT NULL ,
+  `purchase_date` DATETIME NOT NULL ,
+  `expires_date` DATETIME NULL DEFAULT NULL ,
+  `update_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  PRIMARY KEY (`seq`) ,
+  INDEX `subscriber_ios_transaction_fk_subscriber_app_idx` (`subscriber_app_seq` ASC) ,
+  CONSTRAINT `subscriber_ios_transaction_fk_subscriber_app`
+    FOREIGN KEY (`subscriber_app_seq` )
+    REFERENCES `golfclub`.`subscriber_app` (`seq` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
