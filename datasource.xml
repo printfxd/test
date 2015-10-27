@@ -1,0 +1,30 @@
+db.driverClassName=com.mysql.jdbc.Driver
+db.url=jdbc:mysql://172.16.10.20/airkids
+db.username=airkids
+db.password=airkids@2012
+db.initialSize=5
+db.maxActive=10
+db.testWhileIdle=false
+db.testOnBorrow=true
+db.testOnReturn=false
+db.minEvictableIdleTimeMillis=10000
+db.timeBetweenEvictionRunsMillis=10000
+db.numTestsPerEvictionRun=10
+db.validationQuery=select 1 from dual;
+
+
+<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+  <property name="driverClassName" value="${db.driverClassName}" />
+  <property name="url" value="${db.url}" />
+  <property name="username" value="${db.username}" />
+  <property name="password" value="${db.password}" />
+  <property name="initialSize" value="${db.initialSize}" />
+  <property name="maxActive" value="${db.maxActive}" />
+  <property name="testWhileIdle" value="${db.testWhileIdle}" />
+  <property name="testOnBorrow" value="${db.testOnBorrow}" />
+  <property name="testOnReturn" value="${db.testOnReturn}" />
+  <property name="minEvictableIdleTimeMillis" value="${db.minEvictableIdleTimeMillis}" />
+  <property name="timeBetweenEvictionRunsMillis" value="${db.timeBetweenEvictionRunsMillis}" />
+  <property name="numTestsPerEvictionRun" value="${db.numTestsPerEvictionRun}" />
+  <property name="validationQuery" value="${db.validationQuery}" />
+</bean>
