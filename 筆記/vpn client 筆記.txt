@@ -1,0 +1,221 @@
+================================================================================================================
+===================================================  VPN ======================================================
+================================================================================================================
+
+vpn : vd.hwada / HwaDa123
+vpn : vd.hwada1 / HwaDa123
+
+================================================================================================================
+==================== Airkids & Golfclub & Lifestyle  ** 172.16.74.82 & 172.16.74.83 ============================
+================================================================================================================
+
+ssh sekoan@172.16.74.83
+pass = Sek0an888
+
+ssh sekoan@172.16.74.82
+pass = Sek0an888
+
+ssh sekoan@172.16.74.81	
+pass = Sek0an888
+
+su -
+M0D8erver
+
+cd logs:
+cd /opt/glassfish3/glassfish/domains/sekoan/logs/
+
+cd autodeploy:
+cd /opt/glassfish3/glassfish/domains/sekoan/autodeploy/
+
+82 copy to autodeploy : 
+cp /home/sekoan/airkids_frontend_deployment/airkids-frontendapp-war.war .
+cp /home/sekoan/golfclub_frontend_deployment/golfclub-frontendapp-war.war .
+cp /home/sekoan/lifestyle_frontend_deployment/lifestyle-frontendapp-war.war .
+cp /home/sekoan/SxS_frontend_deployment/sxs-frontendapp-war.war .
+
+83 copy to autodeploy : 
+cp /home/sekoan/airkids-frontend/airkids-frontendapp-war.war .
+cp /home/sekoan/golfclub-frontend/golfclub-frontendapp-war.war .
+cp /home/sekoan/lifestyle_frontend/lifestyle-frontendapp-war.war .
+cp /home/sekoan/golfclub-promotionapp-war.war .	
+
+83 SMS 模擬程式 : 
+java -jar sms_test.jar
+XXX : http://210.65.232.5:8080/sekoan_sbs/golfclub-promotionapp-war/
+
+
+172.16.74.81:8080/airkids-frontend-war/
+172.16.74.82:8080/airkids-frontend-war/
+172.16.74.83:8080/airkids-frontend-war/
+
+172.16.74.81:8080/golfclub-frontend-war/
+172.16.74.82:8080/golfclub-frontend-war/
+172.16.74.83:8080/golfclub-frontend-war/
+
+172.16.74.82:8080/lifestyle-frontend-war/
+172.16.74.83:8080/lifestyle-frontend-war/
+
+backend 後台入口網頁
+http://172.16.10.20:8080/backend/
+
+
+================================================================================================================
+==================== Airkids & Golfclub & Lifestyle  ** 172.16.74.81 & 172.16.74.83 ============================
+================================================================================================================
+
+* step1. 
+su -
+M0D8erver
+
+* step2.
+[root@sekoan_sbs ~]# cd scripts
+
+* step3.
+[root@sekoan_sbs scripts]# ls
+ap_gf_log_arc.sh  deploy_gf.sh  deploy_schedule.sh  gf_log_arc.sh  gf_log_arc.sh.new  hw_rs.log  mon_rs.sh
+
+* step4.
+[root@sekoan_sbs scripts]# ./deploy_schedule.sh 
+
+* step5. set scheduler dateTime & path
+
+/home/sekoan/airkids-frontendapp-war.war
+/home/sekoan/golfclub-frontendapp-war.war
+/home/sekoan/lifestyle-frontendapp-war.war
+
+
+================================================================================================================
+=================================  STBServer & Xboard (DEMO) 192.168.10.15  ====================================
+================================================================================================================
+
+ssh stb@192.168.10.15
+pass = Stb@2013
+su - 
+Root@2013
+
+
+*** stb-server ***
+
+cd logs:
+cd /opt/glassfish3/glassfish/domains/stb/logs/
+
+cd autodeploy:
+cd /opt/glassfish3/glassfish/domains/stb/autodeploy/
+
+copy to autodeploy:
+cp /home/stb/stbserver_deployment/stbserver.war .
+cp /home/stb/xboard_deployment/xboard-frontendapp-war.war .
+
+
+================================================================================================================
+====================  stbserver-manager (north 172.17.241.122 | south 172.26.255.110)  =========================
+================================================================================================================
+
+-------------- 北區 -----------------
+新增 static route
+sudo route add 172.17.241.0/24 172.16.74.126
+
+ssh huada@172.17.241.122
+password : Huada+2014
+(huada / Huada+2014) , (cht / cht@123)
+
+su -
+password : modCHTN
+
+cd /opt/glassfish3/glassfish/domains/astb/autodeploy/
+cd /opt/glassfish3/glassfish/domains/astb/logs
+cp /home/huada/stbserver-managerapp-war.war .
+
+sudo mv stbsrv test
+sudo ln -s /var/stbsrv/ stbsrv
+
+URL = http://172.17.241.122:8080/stbserver-managerapp-war/
+
+-------------- 南區 -----------------
+新增 static route
+sudo route add 172.26.255.0/24 172.16.74.126
+
+
+ssh huada@172.26.255.110
+password : Huada+2014
+(huada / Huada+2014) , (cht / cht@123)
+
+su -
+password : modCHTS
+
+cd /opt/glassfish3/glassfish/domains/astb/autodeploy/
+cd /opt/glassfish3/glassfish/domains/astb/logs
+cp /home/huada/stbserver-managerapp-war.war .
+
+sudo mv stbsrv test
+sudo ln -s /var/stbsrv/ stbsrv
+
+URL = http://172.26.255.110:8080/stbserver-managerapp-war/
+
+
+-------------- 中區 -----------------
+新增 static route
+sudo route add 172.20.176.0/24 172.16.74.126
+
+ssh huada@172.20.185.202
+password : Huada+2014
+
+su -
+password : hwachtc
+
+cd /opt/glassfish3/glassfish/domains/astb/autodeploy/
+
+
+cd /opt/glassfish3/glassfish/domains/astb/applications/stbserver-managerapp-war/resources/var/
+cd /opt/glassfish3/glassfish/domains/astb/logs
+cp /root/astb/stbserver-managerapp-war.war .
+
+
+
+-------------- 北區廠商測試區 -----------------
+新增 static route
+sudo route add 172.17.241.0/24 172.16.74.126
+
+ssh huada@172.17.241.86
+password : 2014+Huada
+(huada / 2014+Huada) , (stb / Stb+2014)
+
+sudo mv stbsrv test
+sudo ln -s /var/stbsrv/ stbsrv
+
+URL = http://172.17.241.86:8080/stbserver-managerapp-war/
+
+
+*Mysql 5.0
+User / Password: astb / astb+888
+ 
+*Glassfish
+        Domain: astb
+        User / Password: admin / astb+888
+
+================================================================================================================
+=============================================  glassfish 重新啟動  ==============================================
+================================================================================================================
+
+/opt/glassfish3/glassfish/bin
+
+asadmin --help
+
+sudo ./asadmin restart-domain
+sudo ./asadmin start-domain
+
+sudo asadmin stop-domain sekoan 
+asadmin start-domain sekoan
+
+
+================================================================================================================
+===============================================  .83 對外連結  ==================================================
+================================================================================================================
+
+http://210.65.232.5:8080/sekoan_sbs/golfclub-frontendapp-war/
+
+
+http://172.17.241.122:8080/sso-backend/
+
+
+

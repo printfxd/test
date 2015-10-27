@@ -1,0 +1,144 @@
+-------------- 北區 -----------------
+
+新增 static route
+sudo route add 172.17.241.0/24 172.16.74.126
+
+
+ssh huada@172.17.241.122
+password : Huada+2014
+(huada / Huada+2014) , (cht / cht@123)
+
+cd /opt/glassfish3/glassfish/domains/astb/autodeploy/
+cd /opt/glassfish3/glassfish/domains/astb/logs
+cp /home/huada/stbserver-managerapp-war.war .
+
+sudo mv stbsrv test
+sudo ln -s /var/stbsrv/ stbsrv
+
+
+-------------- 南區 -----------------
+
+新增 static route
+sudo route add 172.26.255.0/24 172.16.74.126
+
+
+ssh huada@172.26.255.110
+password : Huada+2014
+(huada / Huada+2014) , (cht / cht@123)
+
+cd /opt/glassfish3/glassfish/domains/astb/autodeploy/
+cd /opt/glassfish3/glassfish/domains/astb/logs
+cp /home/huada/stbserver-managerapp-war.war .
+
+
+http://172.26.255.110:8080/stbserver-managerapp-war/
+
+
+
+sudo mv stbsrv test
+sudo ln -s /var/stbsrv/ stbsrv
+
+
+
+
+
+
+
+
+
+Last login: Fri Mar  7 16:55:00 on ttys001
+MingIngde-iMac:~ hdd101022$ ssh huada@172.17.241.122
+huada@172.17.241.122's password: 
+Last login: Fri Mar  7 16:51:31 2014 from 172.16.72.210
+[huada@tps2-serv-2305 ~]$ ls
+OTA.zip  stbserver-managerapp-war.war  stbserver.war
+[huada@tps2-serv-2305 ~]$ cd /opt/glassfish3/glassfish/domains/astb/
+applications/ autodeploy/   bin/          config/       docroot/      generated/    lib/          logs/         osgi-cache/   
+[huada@tps2-serv-2305 ~]$ cd /opt/glassfish3/glassfish/domains/astb/
+applications/ autodeploy/   bin/          config/       docroot/      generated/    lib/          logs/         osgi-cache/   
+[huada@tps2-serv-2305 ~]$ cd /opt/glassfish3/glassfish/domains/astb/autodeploy/
+.autodeploystatus/                     stbserver-managerapp-war.war           stbserver.war                          
+bundles/                               stbserver-managerapp-war.war_deployed  stbserver.war_deployed                 
+[huada@tps2-serv-2305 ~]$ cd /opt/glassfish3/glassfish/domains/astb/autodeploy/
+[huada@tps2-serv-2305 autodeploy]$ sudo cp /home/huada/stbserver-managerapp-war.war .
+[sudo] password for huada: 
+[huada@tps2-serv-2305 autodeploy]$ cd ..
+[huada@tps2-serv-2305 astb]$ cd applications/
+__internal/               stbserver/                stbserver-managerapp-war/ 
+[huada@tps2-serv-2305 astb]$ cd applications/stbserver-managerapp-war/
+META-INF/  resources/ WEB-INF/   
+[huada@tps2-serv-2305 astb]$ cd applications/stbserver-managerapp-war/resources/
+bootstrap/                guiscripts/               mibbrowser/               snmpinquisitor/           zTree-v3.5.13/            
+firmwareConfiguration/    jQuery-File-Upload-9.5.6/ MIBS/                     var/                      
+[huada@tps2-serv-2305 astb]$ cd applications/stbserver-managerapp-war/resources/var/
+stbsrv/   uploaded/ 
+[huada@tps2-serv-2305 astb]$ cd applications/stbserver-managerapp-war/resources/var/
+[huada@tps2-serv-2305 var]$ ls
+stbsrv  uploaded
+[huada@tps2-serv-2305 var]$ cd /
+.autofsck           cgroup/             etc/                lost+found/         net/                root/               sys/                
+.autorelabel        data/               home/               media/              opt/                sbin/               tmp/                
+bin/                .dbus/              lib/                misc/               proc/               selinux/            usr/                
+boot/               dev/                lib64/              mnt/                .readahead_collect  srv/                var/                
+[huada@tps2-serv-2305 var]$ cd stbsrv/
+[huada@tps2-serv-2305 stbsrv]$ rm version.txt 
+rm：是否移除有防寫保護的普通檔案‘version.txt’? y
+rm: 無法移除 ‘version.txt’: 拒絕不符權限的操作
+[huada@tps2-serv-2305 stbsrv]$ ls
+version.txt
+[huada@tps2-serv-2305 stbsrv]$ sudo ls -s /var/
+account/  crash/    db/       ftp/      gdm/      local/    log/      named/    opt/      run/      stbsrv/   www/      
+cache/    cvs/      empty/    games/    lib/      lock/     mail/     nis/      preserve/ spool/    tmp/      yp/       
+[huada@tps2-serv-2305 stbsrv]$ cd ..
+[huada@tps2-serv-2305 var]$ ls
+stbsrv  uploaded
+[huada@tps2-serv-2305 var]$ mv stbsrv test
+mv: 無法將 ‘stbsrv’ 移動至 ‘test’: 拒絕不符權限的操作
+[huada@tps2-serv-2305 var]$ sudo mv stbsrv test
+[huada@tps2-serv-2305 var]$ ls
+test  uploaded
+[huada@tps2-serv-2305 var]$ sudo ln -s /var/stbsrv/ stbsrv
+[huada@tps2-serv-2305 var]$ ls
+stbsrv  test  uploaded
+[huada@tps2-serv-2305 var]$ cd stbsrv/
+[huada@tps2-serv-2305 stbsrv]$ ls
+888
+[huada@tps2-serv-2305 stbsrv]$ cd ..
+[huada@tps2-serv-2305 var]$ ls
+stbsrv  test  uploaded
+[huada@tps2-serv-2305 var]$ sudo rm stbsrv
+[huada@tps2-serv-2305 var]$ ls
+test  uploaded
+[huada@tps2-serv-2305 var]$ cd ..
+[huada@tps2-serv-2305 resources]$ cd ..
+[huada@tps2-serv-2305 stbserver-managerapp-war]$ cd ..
+[huada@tps2-serv-2305 applications]$ cd ..
+[huada@tps2-serv-2305 astb]$ ls
+applications  autodeploy  bin  config  docroot  generated  lib  logs  osgi-cache
+[huada@tps2-serv-2305 astb]$ cd autodeploy/
+[huada@tps2-serv-2305 autodeploy]$ cp /home/huada/stbserver-managerapp-war.war .
+cp: 無法建立普通檔案 ‘./stbserver-managerapp-war.war’: 拒絕不符權限的操作
+[huada@tps2-serv-2305 autodeploy]$ sudo cp /home/huada/stbserver-managerapp-war.war .
+[huada@tps2-serv-2305 autodeploy]$ cd ..
+[huada@tps2-serv-2305 astb]$ cd a
+applications/ autodeploy/   
+[huada@tps2-serv-2305 astb]$ cd applications/stbserver-managerapp-war/
+META-INF/  resources/ WEB-INF/   
+[huada@tps2-serv-2305 astb]$ cd applications/stbserver-managerapp-war/resources/
+bootstrap/                guiscripts/               mibbrowser/               snmpinquisitor/           zTree-v3.5.13/            
+firmwareConfiguration/    jQuery-File-Upload-9.5.6/ MIBS/                     var/                      
+[huada@tps2-serv-2305 astb]$ cd applications/stbserver-managerapp-war/resources/var/
+[huada@tps2-serv-2305 var]$ ls
+stbsrv  uploaded
+[huada@tps2-serv-2305 var]$ mv stbsrv test
+mv: 無法將 ‘stbsrv’ 移動至 ‘test’: 拒絕不符權限的操作
+[huada@tps2-serv-2305 var]$ sudo mv stbsrv test
+[huada@tps2-serv-2305 var]$ ls
+test  uploaded
+[huada@tps2-serv-2305 var]$ sudo ln -s /var/stbsrv/ stbsrv
+[huada@tps2-serv-2305 var]$ ls
+stbsrv  test  uploaded
+[huada@tps2-serv-2305 var]$ cd stbsrv/
+[huada@tps2-serv-2305 stbsrv]$ ls
+888
+
