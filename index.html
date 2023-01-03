@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+    	<meta charset="utf-8">
+  		<title>付款成功</title>
+    	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    	<style>
+    		body {
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  min-height: 100vh;
+			  flex-direction: column;
+			}
+
+			h2 {
+			  font-family: Helvetica;
+			  font-size: 72px;
+			  margin-top: 40px;
+			  color: #333;
+			  opacity: 0;
+
+			  display: flex;
+  			  /* 水平置中 */
+  			  justify-content: center;    
+  			  /* 垂直置中 */
+			  /*align-items: center;*/
+			}
+
+			h2 {
+			  animation: .6s title ease-in-out;
+			  animation-delay: 1.2s;
+			  animation-fill-mode: forwards;
+			}
+
+			.circle {
+			  stroke-dasharray: 2198;
+			  stroke-dashoffset: 2198;
+			}
+
+			svg .circle {
+			  animation: circle 1s ease-in-out;
+			  animation-fill-mode: forwards;
+			}
+
+			.tick {
+			  stroke-dasharray: 350;
+			  stroke-dashoffset: 350;
+			}
+
+			svg .tick {
+			  animation: tick .8s ease-out;
+			  animation-fill-mode: forwards;
+			  animation-delay: .95s;
+			}
+
+			@keyframes circle {
+			  from {
+			    stroke-dashoffset: 2198;
+			  }
+			  to {
+			    stroke-dashoffset: 4400;
+			  }
+			}
+
+			@keyframes tick {
+			  from {
+			    stroke-dashoffset: 350;
+			  }
+			  to {
+			    stroke-dashoffset: 0;
+			  }
+			}
+
+			@keyframes title {
+			  from {
+			    opacity: 0;
+			  }
+			  to {
+			    opacity: 1;
+			  }
+			}
+
+			.card {
+	        	background: white;
+	        	padding: 150px;
+	        	border-radius: 4px;
+	        	box-shadow: 0 2px 3px #C8D0D8;
+	        	display: inline-block;
+	        	margin: 0 auto;
+	    	}
+
+		</style>
+
+    </head>
+    
+    <body>
+    	<!-- <input type="checkbox"> -->
+
+    	<div class="card">
+    		<div style="border-radius:600px; height:720px; width:720px; background: #F8FAF5; margin:0 auto;">
+				<svg width="900" height="900">
+  					<circle fill="none" stroke="#9ABC66" stroke-width="20" cx="40" cy="360" r="350" class="circle" stroke-linecap="round" transform="rotate(-90 200 200) "/>
+  					<polyline fill="none" stroke="#9ABC66" stroke-width="24" points="258,344 343,404 504,228" stroke-linecap="round" stroke-linejoin="round" class="tick" />
+				</svg>
+			</div>
+			<div><h2 class="fade">付款成功！</h2></div>
+		</div>
+    </body>
+
+</html>
